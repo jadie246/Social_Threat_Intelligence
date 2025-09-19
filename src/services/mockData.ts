@@ -107,26 +107,68 @@ export const mockLogs: SystemLog[] = [
   {
     id: '1',
     userId: '1',
+    userName: 'System Administrator',
     action: 'Content Analysis',
     details: 'Analyzed text content with high-risk classification',
     timestamp: new Date('2025-01-15T10:30:00'),
     level: 'warning',
+    ipAddress: '192.168.1.100',
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
   },
   {
     id: '2',
     userId: '1',
+    userName: 'System Administrator',
     action: 'User Login',
     details: 'Successful admin login from IP 192.168.1.100',
     timestamp: new Date('2025-01-15T08:00:00'),
     level: 'info',
+    ipAddress: '192.168.1.100',
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
   },
   {
     id: '3',
     userId: '2',
+    userName: 'Security Analyst',
     action: 'Alert Generated',
     details: 'Critical threat alert created for analysis ID 2',
     timestamp: new Date('2025-01-15T09:16:00'),
     level: 'error',
+    ipAddress: '192.168.1.101',
+    userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+  },
+  {
+    id: '4',
+    userId: '1',
+    userName: 'System Administrator',
+    action: 'User Management',
+    details: 'Created new user account for john.doe@example.com',
+    timestamp: new Date('2025-01-14T16:45:00'),
+    level: 'info',
+    ipAddress: '192.168.1.100',
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+  },
+  {
+    id: '5',
+    userId: '2',
+    userName: 'Security Analyst',
+    action: 'Settings Update',
+    details: 'Modified AI threat sensitivity threshold to 85%',
+    timestamp: new Date('2025-01-14T14:20:00'),
+    level: 'warning',
+    ipAddress: '192.168.1.101',
+    userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+  },
+  {
+    id: '6',
+    userId: '3',
+    userName: 'Regular User',
+    action: 'Failed Login',
+    details: 'Failed login attempt - invalid password',
+    timestamp: new Date('2025-01-14T12:10:00'),
+    level: 'warning',
+    ipAddress: '192.168.1.150',
+    userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15',
   },
 ];
 
@@ -201,4 +243,74 @@ export const timelineData = {
       tension: 0.4,
     },
   ],
+};
+
+export const mockReports: Report[] = [
+  {
+    id: '1',
+    title: 'Weekly Threat Summary',
+    type: 'threat-summary',
+    dateRange: {
+      start: new Date('2025-01-08'),
+      end: new Date('2025-01-15'),
+    },
+    generatedBy: 'System Administrator',
+    generatedAt: new Date('2025-01-15T09:00:00'),
+    data: {
+      totalThreats: 45,
+      highRisk: 12,
+      mediumRisk: 23,
+      lowRisk: 10,
+    },
+    format: 'pdf',
+  },
+  {
+    id: '2',
+    title: 'User Activity Report',
+    type: 'user-activity',
+    dateRange: {
+      start: new Date('2025-01-01'),
+      end: new Date('2025-01-15'),
+    },
+    generatedBy: 'Security Analyst',
+    generatedAt: new Date('2025-01-15T14:30:00'),
+    data: {
+      activeUsers: 42,
+      newRegistrations: 8,
+      totalAnalyses: 156,
+    },
+    format: 'csv',
+  },
+];
+
+export const mockSettings: SystemSettings = {
+  ai: {
+    threatSensitivity: 7,
+    confidenceThreshold: 75,
+    autoAlertGeneration: true,
+    modelVersion: 'v2.1.0',
+  },
+  alerts: {
+    emailNotifications: true,
+    smsNotifications: false,
+    webhookUrl: 'https://api.example.com/webhooks/alerts',
+    retentionDays: 90,
+  },
+  security: {
+    sessionTimeout: 30,
+    maxLoginAttempts: 5,
+    requireTwoFactor: false,
+    passwordPolicy: {
+      minLength: 8,
+      requireSpecialChars: true,
+      requireNumbers: true,
+      requireUppercase: true,
+    },
+  },
+  system: {
+    logLevel: 'info',
+    dataRetentionDays: 365,
+    backupFrequency: 'daily',
+    maintenanceMode: false,
+  },
 };

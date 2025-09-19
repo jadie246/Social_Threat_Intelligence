@@ -34,10 +34,13 @@ export interface Alert {
 export interface SystemLog {
   id: string;
   userId: string;
+  userName: string;
   action: string;
   details: string;
   timestamp: Date;
   level: 'info' | 'warning' | 'error';
+  ipAddress?: string;
+  userAgent?: string;
 }
 
 export interface DashboardStats {
@@ -55,5 +58,51 @@ export interface DashboardStats {
     extremism: number;
     suicide: number;
     terrorism: number;
+  };
+}
+
+export interface Report {
+  id: string;
+  title: string;
+  type: 'threat-summary' | 'user-activity' | 'system-health' | 'custom';
+  dateRange: {
+    start: Date;
+    end: Date;
+  };
+  generatedBy: string;
+  generatedAt: Date;
+  data: any;
+  format: 'pdf' | 'csv' | 'json';
+}
+
+export interface SystemSettings {
+  ai: {
+    threatSensitivity: number;
+    confidenceThreshold: number;
+    autoAlertGeneration: boolean;
+    modelVersion: string;
+  };
+  alerts: {
+    emailNotifications: boolean;
+    smsNotifications: boolean;
+    webhookUrl?: string;
+    retentionDays: number;
+  };
+  security: {
+    sessionTimeout: number;
+    maxLoginAttempts: number;
+    requireTwoFactor: boolean;
+    passwordPolicy: {
+      minLength: number;
+      requireSpecialChars: boolean;
+      requireNumbers: boolean;
+      requireUppercase: boolean;
+    };
+  };
+  system: {
+    logLevel: 'debug' | 'info' | 'warning' | 'error';
+    dataRetentionDays: number;
+    backupFrequency: 'daily' | 'weekly' | 'monthly';
+    maintenanceMode: boolean;
   };
 }

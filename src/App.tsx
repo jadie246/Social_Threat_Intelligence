@@ -7,6 +7,8 @@ import { Header } from './components/layout/Header';
 import { DashboardView } from './views/DashboardView';
 import { AnalysisView } from './views/AnalysisView';
 import { AdminView } from './views/AdminView';
+import { AlertsView } from './views/AlertsView';
+import { ReportsView } from './views/ReportsView';
 
 function AuthWrapper() {
   const [isLogin, setIsLogin] = useState(true);
@@ -37,19 +39,9 @@ function MainApp() {
       case 'analysis':
         return <AnalysisView />;
       case 'alerts':
-        return (
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-            <h2 className="text-xl font-semibold text-white mb-4">Alert Management</h2>
-            <p className="text-gray-400">Advanced alert management interface coming soon...</p>
-          </div>
-        );
+        return <AlertsView />;
       case 'reports':
-        return (
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-            <h2 className="text-xl font-semibold text-white mb-4">Reports & Analytics</h2>
-            <p className="text-gray-400">Detailed reporting and analytics interface coming soon...</p>
-          </div>
-        );
+        return <ReportsView />;
       case 'users':
       case 'logs':
       case 'settings':
